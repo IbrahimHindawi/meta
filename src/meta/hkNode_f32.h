@@ -2,7 +2,7 @@
 #include "core.h"
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct {} f32;
+
 struct hkNode_f32 {
     struct hkNode *next;
     f32 data;

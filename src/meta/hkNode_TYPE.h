@@ -1,10 +1,10 @@
 /* hkNode_TYPE */
-#include "core.h"
+#include "../core.h"
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct {} TYPE;
 struct hkNode_TYPE {
-    struct hkNode *next;
+    struct hkNode_TYPE *next;
     TYPE data;
 };
 void hkNode_TYPE_init(struct hkNode_TYPE *node, TYPE data) {
