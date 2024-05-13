@@ -1,18 +1,24 @@
 /* hkNode_i32 */
-#include "core.h"
+#include "../core.h"
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 struct hkNode_i32 {
-    struct hkNode *next;
+    struct hkNode_i32 *next;
     i32 data;
 };
-void hkNode_i32_init(struct hkNode_i32 *node, i32 data) {
-    if (null != (malloc(sizeof(struct hkNode_i32)))) {
+
+struct hkNode_i32 *hkNode_i32_init(i32 data) {
+    struct hkNode_i32 *node = malloc(sizeof(struct hkNode_i32));
+    if (node) {
         node->next = null;
         node->data = data;
     }
+    return node;
 }
+
 void hkNode_i32_deinit(struct hkNode_i32 *node) {
     free(node);
 }

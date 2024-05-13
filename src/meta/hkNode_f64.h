@@ -1,18 +1,24 @@
 /* hkNode_f64 */
-#include "core.h"
+#include "../core.h"
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 struct hkNode_f64 {
-    struct hkNode *next;
+    struct hkNode_f64 *next;
     f64 data;
 };
-void hkNode_f64_init(struct hkNode_f64 *node, f64 data) {
-    if (null != (malloc(sizeof(struct hkNode_f64)))) {
+
+struct hkNode_f64 *hkNode_f64_init(f64 data) {
+    struct hkNode_f64 *node = malloc(sizeof(struct hkNode_f64));
+    if (node) {
         node->next = null;
         node->data = data;
     }
+    return node;
 }
+
 void hkNode_f64_deinit(struct hkNode_f64 *node) {
     free(node);
 }

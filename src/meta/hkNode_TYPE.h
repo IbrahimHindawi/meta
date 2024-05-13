@@ -2,17 +2,23 @@
 #include "../core.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 typedef struct {} TYPE;
+
 struct hkNode_TYPE {
     struct hkNode_TYPE *next;
     TYPE data;
 };
-void hkNode_TYPE_init(struct hkNode_TYPE *node, TYPE data) {
-    if (null != (malloc(sizeof(struct hkNode_TYPE)))) {
+
+struct hkNode_TYPE *hkNode_TYPE_init(TYPE data) {
+    struct hkNode_TYPE *node = malloc(sizeof(struct hkNode_TYPE));
+    if (node) {
         node->next = null;
         node->data = data;
     }
+    return node;
 }
+
 void hkNode_TYPE_deinit(struct hkNode_TYPE *node) {
     free(node);
 }
