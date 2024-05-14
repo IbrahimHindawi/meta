@@ -1,3 +1,4 @@
+#pragma once
 /* hkNode_f32 */
 #include "../core.h"
 #include <stdio.h>
@@ -19,7 +20,8 @@ struct hkNode_f32 *hkNode_f32_init(f32 data) {
     return node;
 }
 
-void hkNode_f32_deinit(struct hkNode_f32 *node) {
-    free(node);
+void hkNode_f32_deinit(struct hkNode_f32 **node) {
+    free(*node);
+    *node = null;
 }
 

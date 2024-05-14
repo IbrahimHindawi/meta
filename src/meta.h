@@ -13,7 +13,7 @@ int metamain(const char *metaname, const char*genname) {
     FILE *output = null;
     struct bstrList *lines;
     struct tagbstring postfix = bsStatic("\n");
-    bstring kill = bfromcstr("typedef struct {} TYPE;");
+    bstring kill = bfromcstr("#include \"TYPE.h\"");
     bstring empty = bfromcstr("");
 
     const i32 buffersize = 256;

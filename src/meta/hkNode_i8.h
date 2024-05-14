@@ -1,3 +1,4 @@
+#pragma once
 /* hkNode_i8 */
 #include "../core.h"
 #include <stdio.h>
@@ -19,7 +20,8 @@ struct hkNode_i8 *hkNode_i8_init(i8 data) {
     return node;
 }
 
-void hkNode_i8_deinit(struct hkNode_i8 *node) {
-    free(node);
+void hkNode_i8_deinit(struct hkNode_i8 **node) {
+    free(*node);
+    *node = null;
 }
 

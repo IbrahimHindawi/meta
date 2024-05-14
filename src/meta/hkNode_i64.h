@@ -1,3 +1,4 @@
+#pragma once
 /* hkNode_i64 */
 #include "../core.h"
 #include <stdio.h>
@@ -19,7 +20,8 @@ struct hkNode_i64 *hkNode_i64_init(i64 data) {
     return node;
 }
 
-void hkNode_i64_deinit(struct hkNode_i64 *node) {
-    free(node);
+void hkNode_i64_deinit(struct hkNode_i64 **node) {
+    free(*node);
+    *node = null;
 }
 

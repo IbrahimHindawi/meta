@@ -1,3 +1,4 @@
+#pragma once
 /* hkNode_f64 */
 #include "../core.h"
 #include <stdio.h>
@@ -19,7 +20,8 @@ struct hkNode_f64 *hkNode_f64_init(f64 data) {
     return node;
 }
 
-void hkNode_f64_deinit(struct hkNode_f64 *node) {
-    free(node);
+void hkNode_f64_deinit(struct hkNode_f64 **node) {
+    free(*node);
+    *node = null;
 }
 
