@@ -1,29 +1,25 @@
 /*
- *
+ * Metaprogramming Data Structures & Algorithms in C by
+ * creating an external program that parses C source
+ * and replaces the `TYPE` with a desired type
  */
+#include "core.h"
 #include <stdio.h>
 #include <string.h>
-#include "../bstring/bstring/bstrlib.h"
-#if defined (_MSC_VER)
-/* These warnings from MSVC++ are totally pointless. */
-#define _CRT_SECURE_NO_WARNINGS
-#include <windows.h>
-#endif
-#include "core.h"
 
-#define META 0
+#define META 1
 
 #if META
-#include "meta.h"
+#   include "meta.h"
 #else
-#include "meta/hkNode_core.h"
-#include "meta/hkList_core.h"
+#   include "meta/hkNode_core.h"
+#   include "meta/hkList_core.h"
 #endif
 
 int main() {
 #if META
     // hkNode custom
-    // metagen("hkNode", "i8");
+    // metagen("hkNode", "custom");
     // #include "custom.h"
     // #include "hkNode_custom.h"
     // hkNode core
@@ -51,9 +47,6 @@ int main() {
                 current->data, current, current->next);
         current = current->next;
     }
-
-    // free list
-
 #endif
     return 0;
 }

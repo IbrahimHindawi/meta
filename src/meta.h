@@ -108,7 +108,7 @@ int metacore(const char *metaname) {
     if (null != (output = fopen(bdata(typecorepath), "w"))) {
         for (int i = 0; i < coretypeslen; ++i) {
             metagen(metaname, coretypes[i]);
-            bstring result = bfromcstr("#include \"");
+            bstring result = bfromcstr("#pragma once\n#include \"");
             bstring typename = bfromcstr(metaname);
             bconcat(result, typename);
             bcatcstr(result, "_");
