@@ -16,50 +16,20 @@
 #if META
 #include "meta.h"
 #else
-#include "meta/hkNode_i8.h"
-#include "meta/hkNode_i16.h"
-#include "meta/hkNode_i32.h"
-#include "meta/hkNode_i64.h"
-#include "meta/hkNode_u8.h"
-#include "meta/hkNode_u16.h"
-#include "meta/hkNode_u32.h"
-#include "meta/hkNode_u64.h"
-#include "meta/hkNode_f32.h"
-#include "meta/hkNode_f64.h"
-#include "meta/hkList_i8.h"
-#include "meta/hkList_i16.h"
-#include "meta/hkList_i32.h"
-#include "meta/hkList_i64.h"
-#include "meta/hkList_u8.h"
-#include "meta/hkList_u16.h"
-#include "meta/hkList_u32.h"
-#include "meta/hkList_u64.h"
-#include "meta/hkList_f32.h"
-#include "meta/hkList_f64.h"
+#include "meta/hkNode_core.h"
+#include "meta/hkList_core.h"
 #endif
 
 int main() {
 #if META
-    metamain("hkNode", "i8");
-    metamain("hkNode", "i16");
-    metamain("hkNode", "i32");
-    metamain("hkNode", "i64");
-    metamain("hkNode", "u8");
-    metamain("hkNode", "u16");
-    metamain("hkNode", "u32");
-    metamain("hkNode", "u64");
-    metamain("hkNode", "f32");
-    metamain("hkNode", "f64");
-    metamain("hkList", "i8");
-    metamain("hkList", "i16");
-    metamain("hkList", "i32");
-    metamain("hkList", "i64");
-    metamain("hkList", "u8");
-    metamain("hkList", "u16");
-    metamain("hkList", "u32");
-    metamain("hkList", "u64");
-    metamain("hkList", "f32");
-    metamain("hkList", "f64");
+    // hkNode custom
+    // metagen("hkNode", "i8");
+    // #include "custom.h"
+    // #include "hkNode_custom.h"
+    // hkNode core
+    metacore("hkNode");
+    // hkList core
+    metacore("hkList");
 #else
     struct hkNode_i8 *node0 = hkNode_i8_init(0xAD);
     struct hkNode_i8 *node1 = hkNode_i8_init(0xFF);
