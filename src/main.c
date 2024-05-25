@@ -1,31 +1,34 @@
 /*
  * Metaprogramming Data Structures & Algorithms in C by
- * creating an external program that parses C source
- * and replaces the `TYPE` with a desired type
+ * creating an external program `meta` that parses C source
+ * and replaces the `TYPE` token with a desired type.
+ * for core types -> `metacore()` -> `#include "hkType_core.h"
+ * for new types -> `metagen()` -> 
+ *      `#include "custom.h"`
+ *      `#include "hkType_custom.h"`
  */
 #include "core.h"
 #include <stdio.h>
 #include <string.h>
-
-#define META 1
 
 #if META
 #   include "meta.h"
 #else
 #   include "meta/hkNode_core.h"
 #   include "meta/hkList_core.h"
+#   include "meta/hkArray_core.h"
 #endif
+
+i32 proc(i32 x, i32 y) {
+    i32 result = x + y;
+    return result;
+}
 
 int main() {
 #if META
-    // hkNode custom
-    // metagen("hkNode", "custom");
-    // #include "custom.h"
-    // #include "hkNode_custom.h"
-    // hkNode core
     metacore("hkNode");
-    // hkList core
     metacore("hkList");
+    metacore("hkArray");
 #else
     struct hkNode_i8 *node0 = hkNode_i8_init(0xAD);
     struct hkNode_i8 *node1 = hkNode_i8_init(0xFF);
@@ -47,6 +50,17 @@ int main() {
                 current->data, current, current->next);
         current = current->next;
     }
+    
+    struct hkArray_i32 array = hkArray_i32_create(8);
+    for (i32 i = 0; i < array.length; ++i) {
+        array.data[i] = array.data[i] + 19 * i;
+    }
+    for (i32 i = 0; i < array.length; ++i) {
+        printf("value = %d, address = %p\n", 
+            array.data[i], &array.data[i]);
+    }
+    hkArray_i32_destroy(&array);
+
 #endif
     return 0;
 }
