@@ -13,5 +13,6 @@ int main() {
     metacore("hkNode");
     metacore("hkList");
     metacore("hkArray");
+    metacore("hkQueue");
     return 0;
 }

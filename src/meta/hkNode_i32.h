@@ -12,7 +12,7 @@ structdef(hkNode_i32) {
 hkNode_i32 *hknode_i32_create(i32 data) {
     hkNode_i32 *node = malloc(sizeof(hkNode_i32));
     if (node) {
-        node->next = null;
+        node->next = NULL;
         node->data = data;
     }
     return node;
@@ -20,6 +20,6 @@ hkNode_i32 *hknode_i32_create(i32 data) {
 
 void hknode_i32_destroy(hkNode_i32 **node) {
     free(*node);
-    *node = null;
+    *node = NULL;
 }
 

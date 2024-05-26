@@ -12,7 +12,7 @@ structdef(hkNode_f64) {
 hkNode_f64 *hknode_f64_create(f64 data) {
     hkNode_f64 *node = malloc(sizeof(hkNode_f64));
     if (node) {
-        node->next = null;
+        node->next = NULL;
         node->data = data;
     }
     return node;
@@ -20,6 +20,6 @@ hkNode_f64 *hknode_f64_create(f64 data) {
 
 void hknode_f64_destroy(hkNode_f64 **node) {
     free(*node);
-    *node = null;
+    *node = NULL;
 }
 

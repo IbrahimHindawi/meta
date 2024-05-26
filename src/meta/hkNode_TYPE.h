@@ -12,7 +12,7 @@ structdef(hkNode_TYPE) {
 hkNode_TYPE *hknode_TYPE_create(TYPE data) {
     hkNode_TYPE *node = malloc(sizeof(hkNode_TYPE));
     if (node) {
-        node->next = null;
+        node->next = NULL;
         node->data = data;
     }
     return node;
@@ -20,5 +20,5 @@ hkNode_TYPE *hknode_TYPE_create(TYPE data) {
 
 void hknode_TYPE_destroy(hkNode_TYPE **node) {
     free(*node);
-    *node = null;
+    *node = NULL;
 }
