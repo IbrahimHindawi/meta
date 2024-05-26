@@ -11,7 +11,7 @@ struct hkNode_u64 {
     u64 data;
 };
 
-struct hkNode_u64 *hkNode_u64_init(u64 data) {
+struct hkNode_u64 *hknode_u64_init(u64 data) {
     struct hkNode_u64 *node = malloc(sizeof(struct hkNode_u64));
     if (node) {
         node->next = null;
@@ -20,7 +20,7 @@ struct hkNode_u64 *hkNode_u64_init(u64 data) {
     return node;
 }
 
-void hkNode_u64_deinit(struct hkNode_u64 **node) {
+void hknode_u64_deinit(struct hkNode_u64 **node) {
     free(*node);
     *node = null;
 }

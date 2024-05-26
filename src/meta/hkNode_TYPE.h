@@ -11,7 +11,7 @@ struct hkNode_TYPE {
     TYPE data;
 };
 
-struct hkNode_TYPE *hkNode_TYPE_init(TYPE data) {
+struct hkNode_TYPE *hknode_TYPE_init(TYPE data) {
     struct hkNode_TYPE *node = malloc(sizeof(struct hkNode_TYPE));
     if (node) {
         node->next = null;
@@ -20,7 +20,7 @@ struct hkNode_TYPE *hkNode_TYPE_init(TYPE data) {
     return node;
 }
 
-void hkNode_TYPE_deinit(struct hkNode_TYPE **node) {
+void hknode_TYPE_deinit(struct hkNode_TYPE **node) {
     free(*node);
     *node = null;
 }

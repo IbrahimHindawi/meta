@@ -14,7 +14,7 @@ struct hkArray_i64 {
     size_t border;
 };
 
-struct hkArray_i64 hkArray_i64_create(size_t length) {
+struct hkArray_i64 hkarray_i64_create(size_t length) {
     struct hkArray_i64 array = {0};
     array.unit_size = sizeof(i64);
     array.length = length;
@@ -30,7 +30,7 @@ struct hkArray_i64 hkArray_i64_create(size_t length) {
     return array;
 }
 
-void hkArray_i64_destroy(struct hkArray_i64 *array) {
+void hkarray_i64_destroy(struct hkArray_i64 *array) {
     array->border = 0;
     array->length = 0;
     array->unit_size = 0;
@@ -38,7 +38,7 @@ void hkArray_i64_destroy(struct hkArray_i64 *array) {
 }
 
 // Resize border: Should be a private function.
-void *hkArray_i64_resize(struct hkArray_i64 *array, size_t new_border) {
+void *hkarray_i64_resize(struct hkArray_i64 *array, size_t new_border) {
     size_t old_border = array->border;
     array->border = new_border;
     array->data = realloc(array->data, array->unit_size * array->border);
@@ -57,18 +57,18 @@ void *hkArray_i64_resize(struct hkArray_i64 *array, size_t new_border) {
     return array->data;
 }
 
-void *hkArray_i64_append(struct hkArray_i64 *array, void *elem) {
+void *hkarray_i64_append(struct hkArray_i64 *array, void *elem) {
     if (array->length == 0 && array->border == 0) { 
         array->length += 1;
         array->border += 1;
-        hkArray_i64_resize(array, array->border);
+        hkarray_i64_resize(array, array->border);
         char *cursor = (char *)array->data;
         memcpy(cursor, elem, array->unit_size);
         return array->data;
     }
     if (array->length == array->border ) {
         array->border *= 2;
-        hkArray_i64_resize(array, array->border);
+        hkarray_i64_resize(array, array->border);
     }
     array->length += 1;
     char *cursor = (char *)array->data;
@@ -76,7 +76,7 @@ void *hkArray_i64_append(struct hkArray_i64 *array, void *elem) {
     return array->data;
 }
 
-int hkArray_i64_is_empty(struct hkArray_i64 *array) {
+int hkarray_i64_is_empty(struct hkArray_i64 *array) {
     return array->length == 0 ? 1 : 0;
 }
 

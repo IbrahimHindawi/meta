@@ -11,7 +11,7 @@ struct hkNode_i32 {
     i32 data;
 };
 
-struct hkNode_i32 *hkNode_i32_init(i32 data) {
+struct hkNode_i32 *hknode_i32_init(i32 data) {
     struct hkNode_i32 *node = malloc(sizeof(struct hkNode_i32));
     if (node) {
         node->next = null;
@@ -20,7 +20,7 @@ struct hkNode_i32 *hkNode_i32_init(i32 data) {
     return node;
 }
 
-void hkNode_i32_deinit(struct hkNode_i32 **node) {
+void hknode_i32_deinit(struct hkNode_i32 **node) {
     free(*node);
     *node = null;
 }
