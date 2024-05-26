@@ -7,15 +7,15 @@
 
 
 
-struct hkArray_u16 {
+structdef(hkArray_u16) {
     u16 *data;
     size_t unit_size;
     size_t length;
     size_t border;
 };
 
-struct hkArray_u16 hkarray_u16_create(size_t length) {
-    struct hkArray_u16 array = {0};
+hkArray_u16 hkarray_u16_create(size_t length) {
+    hkArray_u16 array = {0};
     array.unit_size = sizeof(u16);
     array.length = length;
     array.data = malloc(array.unit_size * length);
@@ -30,7 +30,7 @@ struct hkArray_u16 hkarray_u16_create(size_t length) {
     return array;
 }
 
-void hkarray_u16_destroy(struct hkArray_u16 *array) {
+void hkarray_u16_destroy(hkArray_u16 *array) {
     array->border = 0;
     array->length = 0;
     array->unit_size = 0;
@@ -38,7 +38,7 @@ void hkarray_u16_destroy(struct hkArray_u16 *array) {
 }
 
 // Resize border: Should be a private function.
-void *hkarray_u16_resize(struct hkArray_u16 *array, size_t new_border) {
+void *hkarray_u16_resize(hkArray_u16 *array, size_t new_border) {
     size_t old_border = array->border;
     array->border = new_border;
     array->data = realloc(array->data, array->unit_size * array->border);
@@ -57,7 +57,7 @@ void *hkarray_u16_resize(struct hkArray_u16 *array, size_t new_border) {
     return array->data;
 }
 
-void *hkarray_u16_append(struct hkArray_u16 *array, void *elem) {
+void *hkarray_u16_append(hkArray_u16 *array, void *elem) {
     if (array->length == 0 && array->border == 0) { 
         array->length += 1;
         array->border += 1;
@@ -76,7 +76,7 @@ void *hkarray_u16_append(struct hkArray_u16 *array, void *elem) {
     return array->data;
 }
 
-int hkarray_u16_is_empty(struct hkArray_u16 *array) {
+int hkarray_u16_is_empty(hkArray_u16 *array) {
     return array->length == 0 ? 1 : 0;
 }
 

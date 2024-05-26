@@ -7,19 +7,19 @@
 #include "TYPE.h"
 #include "hkNode_TYPE.h"
 
-struct hkList_TYPE {
-    struct hkNode_TYPE *head;
-    struct hkNode_TYPE *tail;
+structdef(hkList_TYPE) {
+    hkNode_TYPE *head;
+    hkNode_TYPE *tail;
 };
 
-struct hkList_TYPE *hklist_TYPE_init() {
-    struct hkList_TYPE *list = malloc(sizeof(struct hkList_TYPE));
+hkList_TYPE *hklist_TYPE_init() {
+    hkList_TYPE *list = malloc(sizeof(hkList_TYPE));
     list->head = null;
     list->tail = null;
     return list;
 }
 
-void hklist_TYPE_append(struct hkList_TYPE *list, TYPE data) {
+void hklist_TYPE_append(hkList_TYPE *list, TYPE data) {
     if (!list->head) {
         list->head = hknode_TYPE_init(data);
         return;
@@ -29,12 +29,12 @@ void hklist_TYPE_append(struct hkList_TYPE *list, TYPE data) {
         list->head->next = list->tail;
         return;
     }
-    struct hkNode_TYPE *temp = hknode_TYPE_init(data);
+    hkNode_TYPE *temp = hknode_TYPE_init(data);
     list->tail->next = temp; 
     list->tail = temp;
 }
 
-void hklist_TYPE_deinit(struct hkList_TYPE **list) {
+void hklist_TYPE_deinit(hkList_TYPE **list) {
     free(*list);
     *list = null;
 }

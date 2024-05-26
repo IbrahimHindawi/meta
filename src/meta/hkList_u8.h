@@ -7,19 +7,19 @@
 
 #include "hkNode_u8.h"
 
-struct hkList_u8 {
-    struct hkNode_u8 *head;
-    struct hkNode_u8 *tail;
+structdef(hkList_u8) {
+    hkNode_u8 *head;
+    hkNode_u8 *tail;
 };
 
-struct hkList_u8 *hklist_u8_init() {
-    struct hkList_u8 *list = malloc(sizeof(struct hkList_u8));
+hkList_u8 *hklist_u8_init() {
+    hkList_u8 *list = malloc(sizeof(hkList_u8));
     list->head = null;
     list->tail = null;
     return list;
 }
 
-void hklist_u8_append(struct hkList_u8 *list, u8 data) {
+void hklist_u8_append(hkList_u8 *list, u8 data) {
     if (!list->head) {
         list->head = hknode_u8_init(data);
         return;
@@ -29,12 +29,12 @@ void hklist_u8_append(struct hkList_u8 *list, u8 data) {
         list->head->next = list->tail;
         return;
     }
-    struct hkNode_u8 *temp = hknode_u8_init(data);
+    hkNode_u8 *temp = hknode_u8_init(data);
     list->tail->next = temp; 
     list->tail = temp;
 }
 
-void hklist_u8_deinit(struct hkList_u8 **list) {
+void hklist_u8_deinit(hkList_u8 **list) {
     free(*list);
     *list = null;
 }

@@ -8,28 +8,26 @@ i32 proc(i32 x, i32 y) {
 }
 
 int main() {
-    struct hkNode_i8 *node0 = hknode_i8_init(0xAD);
-    struct hkNode_i8 *node1 = hknode_i8_init(0xFF);
-
+    hkNode_i8 *node0 = hknode_i8_init(0xAD);
+    hkNode_i8 *node1 = hknode_i8_init(0xFF);
     node0->next = node1;
     printf("node0.data = %x, node0.next = %p\n", node0->data, node0->next);
     printf("node1.data = %x, node1.next = %p\n", node1->data, node1->next);
-
     hknode_i8_deinit(&node1);
     hknode_i8_deinit(&node0);
 
-    struct hkList_i32 *list = hklist_i32_init();
+    hkList_i32 *list = hklist_i32_init();
     hklist_i32_append(list, 0xDEADBEEF);
     hklist_i32_append(list, 0xCAFEBABE);
     hklist_i32_append(list, 0xFFFFFFFF);
-    struct hkNode_i32 *current = list->head;
+    hkNode_i32 *current = list->head;
     while (current) {
         printf("current.data = %x, current.addr = %p, current.next = %p\n", 
                 current->data, current, current->next);
         current = current->next;
     }
-    
-    struct hkArray_i32 array = hkarray_i32_create(8);
+
+    hkArray_i32 array = hkarray_i32_create(8);
     for (i32 i = 0; i < array.length; ++i) {
         array.data[i] = array.data[i] + 19 * i;
     }
@@ -39,5 +37,6 @@ int main() {
     }
     hkarray_i32_destroy(&array);
     hkarray_i32_create(8);
+
     return 0;
 }

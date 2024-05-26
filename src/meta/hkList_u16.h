@@ -7,19 +7,19 @@
 
 #include "hkNode_u16.h"
 
-struct hkList_u16 {
-    struct hkNode_u16 *head;
-    struct hkNode_u16 *tail;
+structdef(hkList_u16) {
+    hkNode_u16 *head;
+    hkNode_u16 *tail;
 };
 
-struct hkList_u16 *hklist_u16_init() {
-    struct hkList_u16 *list = malloc(sizeof(struct hkList_u16));
+hkList_u16 *hklist_u16_init() {
+    hkList_u16 *list = malloc(sizeof(hkList_u16));
     list->head = null;
     list->tail = null;
     return list;
 }
 
-void hklist_u16_append(struct hkList_u16 *list, u16 data) {
+void hklist_u16_append(hkList_u16 *list, u16 data) {
     if (!list->head) {
         list->head = hknode_u16_init(data);
         return;
@@ -29,12 +29,12 @@ void hklist_u16_append(struct hkList_u16 *list, u16 data) {
         list->head->next = list->tail;
         return;
     }
-    struct hkNode_u16 *temp = hknode_u16_init(data);
+    hkNode_u16 *temp = hknode_u16_init(data);
     list->tail->next = temp; 
     list->tail = temp;
 }
 
-void hklist_u16_deinit(struct hkList_u16 **list) {
+void hklist_u16_deinit(hkList_u16 **list) {
     free(*list);
     *list = null;
 }

@@ -7,19 +7,19 @@
 
 #include "hkNode_f64.h"
 
-struct hkList_f64 {
-    struct hkNode_f64 *head;
-    struct hkNode_f64 *tail;
+structdef(hkList_f64) {
+    hkNode_f64 *head;
+    hkNode_f64 *tail;
 };
 
-struct hkList_f64 *hklist_f64_init() {
-    struct hkList_f64 *list = malloc(sizeof(struct hkList_f64));
+hkList_f64 *hklist_f64_init() {
+    hkList_f64 *list = malloc(sizeof(hkList_f64));
     list->head = null;
     list->tail = null;
     return list;
 }
 
-void hklist_f64_append(struct hkList_f64 *list, f64 data) {
+void hklist_f64_append(hkList_f64 *list, f64 data) {
     if (!list->head) {
         list->head = hknode_f64_init(data);
         return;
@@ -29,12 +29,12 @@ void hklist_f64_append(struct hkList_f64 *list, f64 data) {
         list->head->next = list->tail;
         return;
     }
-    struct hkNode_f64 *temp = hknode_f64_init(data);
+    hkNode_f64 *temp = hknode_f64_init(data);
     list->tail->next = temp; 
     list->tail = temp;
 }
 
-void hklist_f64_deinit(struct hkList_f64 **list) {
+void hklist_f64_deinit(hkList_f64 **list) {
     free(*list);
     *list = null;
 }

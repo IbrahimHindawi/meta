@@ -17,5 +17,6 @@ typedef int32_t i32;
 typedef int64_t i64;
 typedef size_t usize;
 
-#define sizeofarray(array, type) \
-    (sizeof(array) / sizeof(array[0]))
+#define sizeofarray(array, type) (sizeof(array) / sizeof(array[0]))
+
+#define structdef(structname) typedef struct structname structname; struct structname

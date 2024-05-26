@@ -7,15 +7,15 @@
 
 #include "TYPE.h"
 
-struct hkArray_TYPE {
+structdef(hkArray_TYPE) {
     TYPE *data;
     size_t unit_size;
     size_t length;
     size_t border;
 };
 
-struct hkArray_TYPE hkarray_TYPE_create(size_t length) {
-    struct hkArray_TYPE array = {0};
+hkArray_TYPE hkarray_TYPE_create(size_t length) {
+    hkArray_TYPE array = {0};
     array.unit_size = sizeof(TYPE);
     array.length = length;
     array.data = malloc(array.unit_size * length);
@@ -30,7 +30,7 @@ struct hkArray_TYPE hkarray_TYPE_create(size_t length) {
     return array;
 }
 
-void hkarray_TYPE_destroy(struct hkArray_TYPE *array) {
+void hkarray_TYPE_destroy(hkArray_TYPE *array) {
     array->border = 0;
     array->length = 0;
     array->unit_size = 0;
@@ -38,7 +38,7 @@ void hkarray_TYPE_destroy(struct hkArray_TYPE *array) {
 }
 
 // Resize border: Should be a private function.
-void *hkarray_TYPE_resize(struct hkArray_TYPE *array, size_t new_border) {
+void *hkarray_TYPE_resize(hkArray_TYPE *array, size_t new_border) {
     size_t old_border = array->border;
     array->border = new_border;
     array->data = realloc(array->data, array->unit_size * array->border);
@@ -57,7 +57,7 @@ void *hkarray_TYPE_resize(struct hkArray_TYPE *array, size_t new_border) {
     return array->data;
 }
 
-void *hkarray_TYPE_append(struct hkArray_TYPE *array, void *elem) {
+void *hkarray_TYPE_append(hkArray_TYPE *array, void *elem) {
     if (array->length == 0 && array->border == 0) { 
         array->length += 1;
         array->border += 1;
@@ -76,7 +76,7 @@ void *hkarray_TYPE_append(struct hkArray_TYPE *array, void *elem) {
     return array->data;
 }
 
-int hkarray_TYPE_is_empty(struct hkArray_TYPE *array) {
+int hkarray_TYPE_is_empty(hkArray_TYPE *array) {
     return array->length == 0 ? 1 : 0;
 }
 
