@@ -9,7 +9,7 @@ structdef(hkNode_u8) {
     u8 data;
 };
 
-hkNode_u8 *hknode_u8_init(u8 data) {
+hkNode_u8 *hknode_u8_create(u8 data) {
     hkNode_u8 *node = malloc(sizeof(hkNode_u8));
     if (node) {
         node->next = null;
@@ -18,7 +18,7 @@ hkNode_u8 *hknode_u8_init(u8 data) {
     return node;
 }
 
-void hknode_u8_deinit(hkNode_u8 **node) {
+void hknode_u8_destroy(hkNode_u8 **node) {
     free(*node);
     *node = null;
 }

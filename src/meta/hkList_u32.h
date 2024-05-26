@@ -12,7 +12,7 @@ structdef(hkList_u32) {
     hkNode_u32 *tail;
 };
 
-hkList_u32 *hklist_u32_init() {
+hkList_u32 *hklist_u32_create() {
     hkList_u32 *list = malloc(sizeof(hkList_u32));
     list->head = null;
     list->tail = null;
@@ -21,20 +21,20 @@ hkList_u32 *hklist_u32_init() {
 
 void hklist_u32_append(hkList_u32 *list, u32 data) {
     if (!list->head) {
-        list->head = hknode_u32_init(data);
+        list->head = hknode_u32_create(data);
         return;
     }
     if (!list->tail) {
-        list->tail = hknode_u32_init(data);
+        list->tail = hknode_u32_create(data);
         list->head->next = list->tail;
         return;
     }
-    hkNode_u32 *temp = hknode_u32_init(data);
+    hkNode_u32 *temp = hknode_u32_create(data);
     list->tail->next = temp; 
     list->tail = temp;
 }
 
-void hklist_u32_deinit(hkList_u32 **list) {
+void hklist_u32_destroy(hkList_u32 **list) {
     free(*list);
     *list = null;
 }

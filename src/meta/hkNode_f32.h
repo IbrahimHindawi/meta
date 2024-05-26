@@ -9,7 +9,7 @@ structdef(hkNode_f32) {
     f32 data;
 };
 
-hkNode_f32 *hknode_f32_init(f32 data) {
+hkNode_f32 *hknode_f32_create(f32 data) {
     hkNode_f32 *node = malloc(sizeof(hkNode_f32));
     if (node) {
         node->next = null;
@@ -18,7 +18,7 @@ hkNode_f32 *hknode_f32_init(f32 data) {
     return node;
 }
 
-void hknode_f32_deinit(hkNode_f32 **node) {
+void hknode_f32_destroy(hkNode_f32 **node) {
     free(*node);
     *node = null;
 }

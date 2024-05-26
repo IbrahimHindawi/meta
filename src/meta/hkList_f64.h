@@ -12,7 +12,7 @@ structdef(hkList_f64) {
     hkNode_f64 *tail;
 };
 
-hkList_f64 *hklist_f64_init() {
+hkList_f64 *hklist_f64_create() {
     hkList_f64 *list = malloc(sizeof(hkList_f64));
     list->head = null;
     list->tail = null;
@@ -21,20 +21,20 @@ hkList_f64 *hklist_f64_init() {
 
 void hklist_f64_append(hkList_f64 *list, f64 data) {
     if (!list->head) {
-        list->head = hknode_f64_init(data);
+        list->head = hknode_f64_create(data);
         return;
     }
     if (!list->tail) {
-        list->tail = hknode_f64_init(data);
+        list->tail = hknode_f64_create(data);
         list->head->next = list->tail;
         return;
     }
-    hkNode_f64 *temp = hknode_f64_init(data);
+    hkNode_f64 *temp = hknode_f64_create(data);
     list->tail->next = temp; 
     list->tail = temp;
 }
 
-void hklist_f64_deinit(hkList_f64 **list) {
+void hklist_f64_destroy(hkList_f64 **list) {
     free(*list);
     *list = null;
 }

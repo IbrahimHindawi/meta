@@ -8,15 +8,15 @@ i32 proc(i32 x, i32 y) {
 }
 
 int main() {
-    hkNode_i8 *node0 = hknode_i8_init(0xAD);
-    hkNode_i8 *node1 = hknode_i8_init(0xFF);
+    hkNode_i8 *node0 = hknode_i8_create(0xAD);
+    hkNode_i8 *node1 = hknode_i8_create(0xFF);
     node0->next = node1;
     printf("node0.data = %x, node0.next = %p\n", node0->data, node0->next);
     printf("node1.data = %x, node1.next = %p\n", node1->data, node1->next);
-    hknode_i8_deinit(&node1);
-    hknode_i8_deinit(&node0);
+    hknode_i8_destroy(&node1);
+    hknode_i8_destroy(&node0);
 
-    hkList_i32 *list = hklist_i32_init();
+    hkList_i32 *list = hklist_i32_create();
     hklist_i32_append(list, 0xDEADBEEF);
     hklist_i32_append(list, 0xCAFEBABE);
     hklist_i32_append(list, 0xFFFFFFFF);
