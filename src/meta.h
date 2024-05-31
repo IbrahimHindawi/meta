@@ -37,7 +37,7 @@ int metagen(const char *metaname, const char*genname) {
     bcatcstr(typecorepath, "_");
     bconcat(typecorepath, typestr);
     bcatcstr(typecorepath, ".h");
-    printf("typecorepath: %s\n", bdata(typecorepath));
+    // printf("typecorepath: %s\n", bdata(typecorepath));
 
     bstring typemetapath = bfromcstr(cwdstr);
     bcatcstr(typemetapath, "/src/meta/gen/");
@@ -46,7 +46,7 @@ int metagen(const char *metaname, const char*genname) {
     bcatcstr(typemetapath, "_");
     bconcat(typemetapath, typemetastr);
     bcatcstr(typemetapath, ".h");
-    printf("typemetapath: %s\n", bdata(typemetapath));
+    // printf("typemetapath: %s\n", bdata(typemetapath));
 
     if (null != (input = fopen(bdata(typecorepath), "r"))) {
         bstring b = bread((bNread) fread, input);
@@ -70,7 +70,7 @@ int metagen(const char *metaname, const char*genname) {
         }
         bdestroy(b);
     } else {
-        // printf("Unable to open type core file.");
+        printf("metagen::Unable to open type core file.");
     }
     return 0;
 }
@@ -100,11 +100,11 @@ int metacore(const char *metaname) {
 #endif
 
     bstring typecorepath = bfromcstr(cwdstr);
-    bcatcstr(typecorepath, "/src/meta/");
+    bcatcstr(typecorepath, "/src/meta/gen/");
     bstring typecore = bfromcstr(metaname);
     bconcat(typecorepath, typecore);
     bcatcstr(typecorepath, "_core.h");
-    // printf("typecorepath: %s\n", bdata(typecorepath));
+    printf("typecorepath: %s\n", bdata(typecorepath));
     if (null != (output = fopen(bdata(typecorepath), "w"))) {
         for (int i = 0; i < coretypeslen; ++i) {
             metagen(metaname, coretypes[i]);
@@ -119,7 +119,7 @@ int metacore(const char *metaname) {
             bdestroy(result);
         }
     } else {
-        // printf("Unable to open type core file.");
+        printf("metacore::Unable to open type core file.");
     }
     fclose(output);
     

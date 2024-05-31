@@ -1,7 +1,7 @@
-#include "meta/hkNode_core.h"
-#include "meta/hkList_core.h"
-#include "meta/hkArray_core.h"
-#include "meta/hkQueue_core.h"
+#include "meta/gen/hkNode_core.h"
+#include "meta/gen/hkList_core.h"
+#include "meta/gen/hkArray_core.h"
+#include "meta/gen/hkQueue_core.h"
 
 i32 proc(i32 x, i32 y) {
     i32 result = x + y;
