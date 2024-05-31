@@ -37,16 +37,16 @@ int metagen(const char *metaname, const char*genname) {
     bcatcstr(typecorepath, "_");
     bconcat(typecorepath, typestr);
     bcatcstr(typecorepath, ".h");
-    // printf("typecorepath: %s\n", bdata(typecorepath));
+    printf("typecorepath: %s\n", bdata(typecorepath));
 
     bstring typemetapath = bfromcstr(cwdstr);
-    bcatcstr(typemetapath, "/src/meta/");
+    bcatcstr(typemetapath, "/src/meta/gen/");
     bstring typemetastr = bfromcstr(genname);
     bconcat(typemetapath, typecore);
     bcatcstr(typemetapath, "_");
     bconcat(typemetapath, typemetastr);
     bcatcstr(typemetapath, ".h");
-    // printf("typemetapath: %s\n", bdata(typemetapath));
+    printf("typemetapath: %s\n", bdata(typemetapath));
 
     if (null != (input = fopen(bdata(typecorepath), "r"))) {
         bstring b = bread((bNread) fread, input);
@@ -64,7 +64,7 @@ int metagen(const char *metaname, const char*genname) {
                 }
             }
             else {
-                // printf("Failed to open file.");
+                printf("Failed to open file.");
             }
             bstrListDestroy(lines);
         }

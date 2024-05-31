@@ -42,7 +42,7 @@ int main() {
     hkqueue_i32_enqueue(queue, 0);
     hkqueue_i32_enqueue(queue, 1);
     hkqueue_i32_enqueue(queue, 2);
-    printf("%ld\n", queue->length);
+    printf("%lld\n", queue->length);
     hkNode_i32 *currentq = queue->head;
     while (currentq) {
         printf("current.data = %x, current.addr = %p, current.next = %p\n", 
